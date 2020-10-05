@@ -30,3 +30,25 @@ would be first-come, first-served.
 
 Note: Order numbers are arbitrary. They do not have to be in increasing order.
 */
+
+function checkOrder(takeOut, dineIn, served) {
+  let curTakeOut = 0;
+  let curDineIn = 0;
+
+  for (let i = 0; i < served.length; i++) {
+    if (served[i] !== takeOut[curTakeOut] && served[i] !== dineIn[curDineIn])
+      return false;
+    if (served[i] == takeOut[curTakeOut]) {
+      curTakeOut++;
+    }
+    if (served[i] == dineIn[curDineIn]) {
+      curDineIn++;
+    }
+  }
+  return true;
+}
+
+//Time: O(n)
+//Space: O(1)
+
+//This will return true if served orders don't include ALL orders in dineIn or takeOut. Should this be the case? In real life, it could be that the orders just weren't served YET or that they were never served!
